@@ -76,13 +76,13 @@ int main(int argc, char *argv[]) {
     if (getpid() == id)
     {
       if(k==14)
-        fprintf(fp,"%f,15", timetaken *8);
+        fprintf(fp,"%f,15", timetaken);
       else
-        fprintf(fp, "%f,%d\n", (timetaken * 8),(k+1));
+        fprintf(fp, "%f,%d\n", (timetaken),(k+1));
       
       printf("Time taken by 8 \x1b[1mPROCESSES\x1b[0m:\x1b[92m %f "
              "seconds\x1b[0m\n\n",
-             (timetaken * 8));
+             (timetaken));
     }
   }
   fclose(fp);

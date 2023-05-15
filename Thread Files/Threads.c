@@ -231,7 +231,7 @@ int main()
 	if (ch == 1)
 	{
 		//creating a csv file for BubbleSort done in forking
-		filingUwU("BubbleThread.csv");
+		// filingUwU("BubbleThread.csv");
 	
 		printf("\n\n\x1b[94m~~~~~~~~~BUBBLE SORT~~~~~~~~~~\x1b[0m");
 		
@@ -263,7 +263,7 @@ int main()
 
 			printf(
 				"\nTime taken by 8 \x1b[1mTHREADS\x1b[0m:\x1b[92m %f seconds\x1b[0m\n",
-				timetaken);
+				timetaken/8);
 		}
 		fclose(fp);
 
@@ -278,7 +278,7 @@ int main()
 
 	else if (ch == 2)
 	{
-		filingUwU("SelectionThread.csv");
+		// filingUwU("SelectionThread.csv");
 		printf("\n\n\x1b[94m~~~~~~~~~SELECTION SORT~~~~~~~~~~\x1b[0m");
 		fp = fopen("SelectionThread.csv", "w");
 		fprintf(fp,"time,trial\n");
@@ -303,7 +303,7 @@ int main()
 
 			printf(
 				"\nTime taken by 8 \x1b[1mTHREADS\x1b[0m:\x1b[92m %f seconds\x1b[0m\n",
-				timetaken);
+				timetaken/8);
 		}
 		fclose(fp);
 		// First index of string array must be the file name to execute
@@ -314,7 +314,7 @@ int main()
 
 	else if (ch == 3)
 	{
-		filingUwU("InsertionThread.csv");
+		// filingUwU("InsertionThread.csv");
 		printf("\n\n\x1b[94m~~~~~~~~~INSERTION SORT~~~~~~~~~~\x1b[0m");
 		fp = fopen("InsertionThread.csv", "w");
 		fprintf(fp,"time,trial\n");
@@ -337,7 +337,7 @@ int main()
 
 			printf(
 				"\nTime taken by 8 \x1b[1mTHREADS\x1b[0m:\x1b[92m %f seconds\x1b[0m\n",
-				timetaken);
+				timetaken/8);
 		}
 		fclose(fp);
 
@@ -349,7 +349,7 @@ int main()
 
 	else if (ch == 4)
 	{
-		filingUwU("ShellThread.csv");
+		// filingUwU("ShellThread.csv");
 		printf("\n\n\x1b[94m~~~~~~~~~SHELL  SORT~~~~~~~~~~\x1b[0m");
 		fp = fopen("ShellThread.csv", "w");
 		fprintf(fp,"time,trial\n");
@@ -374,7 +374,7 @@ int main()
 
 			printf(
 				"\nTime taken by 8 \x1b[1mTHREADS\x1b[0m:\x1b[92m %f seconds\x1b[0m\n",
-				timetaken);
+				timetaken/8);
 		}
 		fclose(fp);
 
@@ -385,7 +385,7 @@ int main()
 	}
 	else if (ch == 5)
 	{
-		filingUwU("CombThread.csv");
+		// filingUwU("CombThread.csv");
 		printf("\n\n\x1b[94m~~~~~~~~~COMB SORT~~~~~~~~~~\x1b[0m");
 		fp = fopen("CombThread.csv", "w");
 		fprintf(fp,"time,trial\n");
@@ -410,7 +410,7 @@ int main()
 
 			printf(
 				"\nTime taken by 8 \x1b[1mTHREADS\x1b[0m:\x1b[92m %f seconds\x1b[0m\n",
-				timetaken);
+				timetaken/8);
 		}
 		fclose(fp);
 

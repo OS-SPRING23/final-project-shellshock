@@ -62,7 +62,7 @@ int main() {
   int i;
 	for (i = 0; i < ARR_SIZE; i++)
 	{
-		tempArr[i] = rand() % 1000000;
+		tempArr[i] = rand() % 100000;
 	}
 
   clock_t start1 = clock();
@@ -87,13 +87,12 @@ int main() {
     if (getpid() == id)
     {
       if(k==14)
-        fprintf(fp,"%f,15\n", timetaken *8);
+        fprintf(fp,"%f,15\n", timetaken);
       else
-        fprintf(fp, "%f,%d\n", (timetaken * 8),(k+1));
+        fprintf(fp, "%f,%d\n", (timetaken),(k+1));
       
       printf("Time taken by 8 \x1b[1mPROCESSES\x1b[0m:\x1b[92m %f "
-             "seconds\x1b[0m\n\n",
-             (timetaken * 8));
+            "seconds\x1b[0m\n\n", timetaken);
     }
   }
   fclose(fp);
