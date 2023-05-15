@@ -36,5 +36,15 @@ Before starting this project, these were some facts known to the contributors:
 
 ## Results
 
+![Bubble Sort Plot](Graphs/BubbleSort.png) 
+![Comb Sort Plot](Graphs/CombSort.png) 
+![Insertion Sort Plot](Graphs/InsertionSort.png) 
+![Selection Sort Plot](Graphs/SelectionSort.png) 
+![Shell Sort Plot](Graphs/ShellSort.png) 
 
 ## Conclusion
+
+By observing the values obtained by executing the programs and then by visualizing the comparison it is concluded that multithreading performs better then multiprocessing generally. However, there exist a pradox of choice to whether choose multithreading or multiprocessing. 
+This choice comes down to the use case of the applicatoin or program. if you application has to rely on shared memory and there is not many parts of your program then multi processing is generally a better choice. As it give your program a set of multiple hands to do the job instead of one.
+However, if your program has different tasks at hand and they need to work seprately and need to access the resources of the system independently then mutiprocessing should be your choice.
+
