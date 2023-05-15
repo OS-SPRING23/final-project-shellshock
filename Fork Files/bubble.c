@@ -5,17 +5,18 @@
 #include <sys/wait.h>
 #include <time.h>
 #include <unistd.h>
-// #define ARR_SIZE 1000
-#define ARR_SIZE 5
+#define ARR_SIZE 100000
+// #define ARR_SIZE 
 
 int arr[ARR_SIZE];	//creating global array 
-
+// int tempArr[ARR_SIZE];
 //HERE the parameter of func converts the elements which it recieved as string form
 //from previous file into integer type
-void ParseParameters(char *argv[])
+void ParseParameters(int tempArr[])
 {
   for (int i = 0, j = 1; j < ARR_SIZE + 1; i++, j++)
-    sscanf(argv[j], "%d", &arr[i]);
+    // sscanf(argv[j], "%d", &arr[i]);
+      arr[i] = tempArr[i];
     // for (int i = 0, j = 1; j < ARR_SIZE + 1; i++, j++)
     // sscanf("1", "%d", &arr[i]);
 }
@@ -26,27 +27,39 @@ void BubbleSort()
   int temp;
   for (int i = 0; i < ARR_SIZE; i++)
   {
+    int flag = 0;
     for (int j = 0; j < ARR_SIZE - i - 1; j++)
     {
       if (arr[j] > arr[j + 1])
       {
+        flag = 1;
         temp = arr[j];
         arr[j] = arr[j + 1];
         arr[j + 1] = temp;
       }
     }
+      if(flag == 0) {
+        break;
+      }
   }
 }
 
-int main(int argc, char *argv[])
+int main()
 {
   FILE *fp;
-  
+  int tempArr[ARR_SIZE];
   //THIS TIME we open the file in append mode rather than write
   //because we want to append the results for 15 trials
   fp = fopen("BubbleFork.csv", "a");
   if(fp == NULL)
     printf("ERROR!\n");
+
+  srand(time(0));
+  int i;
+	for (i = 0; i < ARR_SIZE; i++)
+	{
+		tempArr[i] = rand() % 100000;
+	}
 
   int k;
   int id = getpid();
@@ -75,7 +88,7 @@ int main(int argc, char *argv[])
     clock_t start = clock();
     
     //we parse the parameters EVERYTIME SO EACH PROCESS DOSENT RECIEVE AN "ALREADY SORTED" ARRAY
-    ParseParameters(argv);
+    ParseParameters(tempArr);
     BubbleSort();
     
     //stopping the clock once the process has finished sorting
@@ -89,7 +102,7 @@ int main(int argc, char *argv[])
 	if (getpid() == id)
     {
       if(k==14)
-        fprintf(fp,"%f,15", timetaken *8);
+        fprintf(fp,"%f,15\n", timetaken *8);
       else
         fprintf(fp, "%f,%d\n", (timetaken * 8),(k+1));
       

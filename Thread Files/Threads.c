@@ -7,7 +7,7 @@
 #include <time.h>
 #include <unistd.h>
 
-#define ARR_SIZE 1000 
+#define ARR_SIZE 100000
 int arr[ARR_SIZE];
 
 
@@ -26,14 +26,19 @@ void BubbleSort()
 
 	for (i = 0; i < ARR_SIZE - 1; i++)
 	{
-		for (j = 0; j < ARR_SIZE - i - 1; j++)
+		int flag = 0;
+		for (j = 0; j < ARR_SIZE - 1; j++)
 		{
 			if (temparr[j] > temparr[j + 1])
 			{
+				flag = 1;
 				temp = temparr[j];
 				temparr[j] = temparr[j + 1];
 				temparr[j + 1] = temp;
 			}
+		}
+		if(flag==0) {
+			break;
 		}
 	}
 }
@@ -226,7 +231,7 @@ int main()
 	if (ch == 1)
 	{
 		//creating a csv file for BubbleSort done in forking
-		filingUwU("BubbleFork.csv");
+		filingUwU("BubbleThread.csv");
 	
 		printf("\n\n\x1b[94m~~~~~~~~~BUBBLE SORT~~~~~~~~~~\x1b[0m");
 		
@@ -252,7 +257,7 @@ int main()
 	
 			double timetaken = (double)(end - start) / CLOCKS_PER_SEC;
 			if (k == 14)
-				fprintf(fp, "%f,15", timetaken);
+				fprintf(fp, "%f,15\n", timetaken);
 			else
 				fprintf(fp, "%f,%d\n", timetaken,k+1);
 
@@ -263,17 +268,17 @@ int main()
 		fclose(fp);
 
 		// First index of string array must be the file name to execute
-		strcpy(strArr[0], "./bubble");
+		// strcpy(strArr[0], "./bubble");
 		
-		//and now after achieving results of threading, we will send the array
-		//to a forking program to get results of processes.
-		if (execvp("./bubble", strArr) == -1)
-			printf("Error!\n");
+		// //and now after achieving results of threading, we will send the array
+		// //to a forking program to get results of processes.
+		// if (execvp("./bubble", strArr) == -1)
+		// 	printf("Error!\n");
 	}
 
 	else if (ch == 2)
 	{
-		filingUwU("SelectionFork.csv");
+		filingUwU("SelectionThread.csv");
 		printf("\n\n\x1b[94m~~~~~~~~~SELECTION SORT~~~~~~~~~~\x1b[0m");
 		fp = fopen("SelectionThread.csv", "w");
 		fprintf(fp,"time,trial\n");
@@ -302,14 +307,14 @@ int main()
 		}
 		fclose(fp);
 		// First index of string array must be the file name to execute
-		strcpy(strArr[0], "./selection");
-		if (execvp("./selection", strArr) == -1)
-			printf("Error!\n");
+		// strcpy(strArr[0], "./selection");
+		// if (execvp("./selection", strArr) == -1)
+		// 	printf("Error!\n");
 	}
 
 	else if (ch == 3)
 	{
-		filingUwU("InsertionFork.csv");
+		filingUwU("InsertionThread.csv");
 		printf("\n\n\x1b[94m~~~~~~~~~INSERTION SORT~~~~~~~~~~\x1b[0m");
 		fp = fopen("InsertionThread.csv", "w");
 		fprintf(fp,"time,trial\n");
@@ -337,14 +342,14 @@ int main()
 		fclose(fp);
 
 		// First index of string array must be the file name to execute
-		strcpy(strArr[0], "./insertion");
-		if (execvp("./insertion", strArr) == -1)
-			printf("Error!\n");
+		// strcpy(strArr[0], "./insertion");
+		// if (execvp("./insertion", strArr) == -1)
+		// 	printf("Error!\n");
 	}
 
 	else if (ch == 4)
 	{
-		filingUwU("ShellFork.csv");
+		filingUwU("ShellThread.csv");
 		printf("\n\n\x1b[94m~~~~~~~~~SHELL  SORT~~~~~~~~~~\x1b[0m");
 		fp = fopen("ShellThread.csv", "w");
 		fprintf(fp,"time,trial\n");
@@ -374,13 +379,13 @@ int main()
 		fclose(fp);
 
 		// First index of string array must be the file name to execute
-		strcpy(strArr[0], "./shell");
-		if (execvp("./shell", strArr) == -1)
-			printf("Error!\n");
+		// strcpy(strArr[0], "./shell");
+		// if (execvp("./shell", strArr) == -1)
+		// 	printf("Error!\n");
 	}
 	else if (ch == 5)
 	{
-		filingUwU("CombFork.csv");
+		filingUwU("CombThread.csv");
 		printf("\n\n\x1b[94m~~~~~~~~~COMB SORT~~~~~~~~~~\x1b[0m");
 		fp = fopen("CombThread.csv", "w");
 		fprintf(fp,"time,trial\n");
@@ -410,9 +415,9 @@ int main()
 		fclose(fp);
 
 		// First index of string array must be the file name to execute
-		strcpy(strArr[0], "./comb");
-		if (execvp("./comb", strArr) == -1)
-			printf("Error!\n");
+		// strcpy(strArr[0], "./comb");
+		// if (execvp("./comb", strArr) == -1)
+		// 	printf("Error!\n");
 	}
 
 	else

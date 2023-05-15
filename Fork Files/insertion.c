@@ -5,14 +5,15 @@
 #include <sys/wait.h>
 #include <time.h>
 #include <unistd.h>
-#define ARR_SIZE 1000
+#define ARR_SIZE 100000
 
 int arr[ARR_SIZE];
 
-void ParseParameters(char *argv[])
+void ParseParameters(int tempArr[])
 {
   for (int i = 0, j = 1; j < ARR_SIZE + 1; i++, j++)
-    sscanf(argv[j], "%d", &arr[i]);
+    arr[i] = tempArr[i];
+    // sscanf(argv[j], "%d", &arr[i]);
 }
 
 void InsertionSort()
@@ -38,7 +39,7 @@ void InsertionSort()
   }
 }
 
-int main(int argc, char *argv[])
+int main()
 {
   FILE *fp;
   fp = fopen("InsertionFork.csv", "a");
@@ -47,9 +48,18 @@ int main(int argc, char *argv[])
 
   // fprintf(fp,"time,trial\n");
   int k;
+  int tempArr[ARR_SIZE];
   int id = getpid();
   double times[15];
   double timetaken1;
+
+    srand(time(0));
+  int i;
+	for (i = 0; i < ARR_SIZE; i++)
+	{
+		tempArr[i] = rand() % 100000;
+	}
+
   clock_t start1 = clock();
 
   fork();
@@ -64,7 +74,7 @@ int main(int argc, char *argv[])
   for (k = 0; k < 15; k++)
   {
     clock_t start = clock();
-    ParseParameters(argv);
+    ParseParameters(tempArr);
     InsertionSort();
     clock_t end = clock();
 
@@ -72,7 +82,7 @@ int main(int argc, char *argv[])
     if (getpid() == id)
     {
       if(k==14)
-        fprintf(fp,"%f,15", timetaken *8);
+        fprintf(fp,"%f,15\n", timetaken *8);
       else
         fprintf(fp, "%f,%d\n", (timetaken * 8),(k+1));
       
